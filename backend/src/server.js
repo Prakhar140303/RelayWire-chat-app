@@ -19,7 +19,10 @@ const __dirname = path.resolve();
 connectDB();
 app.use("/api/auth",authRoutes);
 app.use("/api/messages",messageRoutes);
+console.log(path.join(__dirname,"../frontend","dist","index.html"));
+
 if(process.env.NODE_ENV === "production") {
+
     app.use(express.static(path.join(__dirname,"../frontend/dist")));
     app.get("*",(req,res)=>{
         res.sendFile(path.join(__dirname,"../frontend","dist","index.html"));
